@@ -21,7 +21,7 @@ renderer.render(scene,camera);
 
 
 const light=new THREE.DirectionalLight(0xffffff);
-light.position.set(-1,0,3);
+light.position.set(-15,0,-10);
 scene.add(light);
 
 const earthGroup=new THREE.Group();
@@ -30,18 +30,18 @@ scene.add(earthGroup)
 
 const controlEarth =new OrbitControls(camera,canvas);
 controlEarth.autoRotate=true;
-controlEarth.autoRotateSpeed=1;
+controlEarth.autoRotateSpeed=2;
 
 const controlLight=new OrbitControls(light,canvas);
 controlLight.autoRotate=true;
-controlLight.autoRotateSpeed=3;
+controlLight.autoRotateSpeed=4;
 
 
 let loader=new THREE.TextureLoader();
 
 
 let earth = new THREE.Mesh(new THREE.IcosahedronGeometry(1,detail),new THREE.MeshStandardMaterial({
-    map         : loader.load('./images/texture.jpg'),
+    map         : loader.load('./images/krebsSmall.png'),
     bumpMap     : loader.load('./images/bumpMap.jpg'), 
     bumpScale   : 0.05,
     roughness   : 1,
