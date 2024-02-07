@@ -1,8 +1,6 @@
-import * as THREE from 'three';
-import { ImageUtils } from 'three';
-import "./styles.css";
-import gsap from "gsap";
-import{OrbitControls} from "three/examples/jsm/controls/OrbitControls";
+import * as THREE from 'https://unpkg.com/three@0.127.0/build/three.module.js';
+//import gsap from "gsap";
+import{OrbitControls} from "https://unpkg.com/three@0.127.0/examples/jsm/controls/OrbitControls";
 const scene =new THREE.Scene();
 let size={width:800,height:600};
 let detail= 3
