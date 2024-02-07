@@ -12,7 +12,11 @@ scene.add(camera);
 
 const canvas=document.getElementById("earth");
 const renderer=new THREE.WebGLRenderer({canvas,antialias:true});
-renderer.setSize(size.width,size.height);
+if(size.width>size.height){
+    renderer.setSize(size.height,size.height);
+}else{
+    renderer.setSize(size.width,size.width);
+}
 renderer.render(scene,camera);
 
 
@@ -85,7 +89,12 @@ window.addEventListener("resize",()=>{
     //both the camera and the renderer need to be refreshed
     camera.updateProjectionMatrix();
     camera.aspect=size.width/size.height; 
-    renderer.setSize(size.width,size.height);
+    if(size.width>size.height){
+        renderer.setSize(size.height,size.height);
+    }else{
+        renderer.setSize(size.width,size.width);
+    }
+
 });
 
 
