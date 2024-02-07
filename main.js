@@ -41,7 +41,7 @@ let loader=new THREE.TextureLoader();
 
 
 let earth = new THREE.Mesh(new THREE.IcosahedronGeometry(1,detail),new THREE.MeshStandardMaterial({
-    map         : loader.load('./images/krebsSmall.png'),
+    map         : loader.load('./images/krebsSmaller.png'),
     bumpMap     : loader.load('./images/bumpMap.jpg'), 
     bumpScale   : 0.05,
     roughness   : 1,
