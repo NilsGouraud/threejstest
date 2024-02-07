@@ -2,8 +2,8 @@ import * as THREE from 'https://unpkg.com/three@0.127.0/build/three.module.js';
 //import gsap from "gsap";
 import{OrbitControls} from "https://unpkg.com/three@0.127.0/examples/jsm/controls/OrbitControls";
 const scene =new THREE.Scene();
-let size={width:800,height:600};
-let detail= 3
+let size={width:window.innerWidth,height:window.innerHeight};
+let detail= 5
 const camera=new THREE.PerspectiveCamera(20,size.width/size.height,0.5,200)
 camera.position.z=5;
 camera.position.x+=5;
@@ -39,7 +39,7 @@ let loader=new THREE.TextureLoader();
 let earth = new THREE.Mesh(new THREE.IcosahedronGeometry(1,detail),new THREE.MeshStandardMaterial({
     map         : loader.load('./images/texture.jpg'),
     bumpMap     : loader.load('./images/bumpMap.jpg'), 
-    bumpScale   : 3,
+    bumpScale   : 0.05,
     roughness   : 1,
     roughnessMap: loader.load("./images/roughnessMap.jpg")
 }))
@@ -49,7 +49,7 @@ let lightsMesh=new THREE.Mesh(new THREE.IcosahedronGeometry(1,detail),new THREE.
     map         : loader.load('./images/earthlights.jpg'),
     color: "white",
     alphaMap : loader.load('./images/earthlights.jpg'),
-    emissive : "white",
+    emissive : "#ffedb8",
     blending    : THREE.AdditiveBlending,
     //bumpMap     : loader.load('./images/bumpMap.jpg'), 
     //bumpScale   : 3,
