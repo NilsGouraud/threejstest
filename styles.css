@@ -10,7 +10,9 @@ img{
     height: 100px;
     width: 100px;
 }
-
+span{
+    font-size:3rem
+}
 canvas{
     border: 1px solid black;
     border-radius: 5%;
