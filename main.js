@@ -20,13 +20,12 @@ if(size.width>size.height){
 }
 renderer.render(scene,camera);
 
-
 const light=new THREE.DirectionalLight(0xffffff);
 light.position.set(-15,0,-10);
 scene.add(light);
 
 const earthGroup=new THREE.Group();
-//earthGroup.rotation.z=(-23.4*Math.PI/180)/2; 
+earthGroup.rotation.z=(-23.4*Math.PI/180)/2; 
 scene.add(earthGroup)
 
 const controlEarth =new OrbitControls(camera,canvas);
@@ -69,7 +68,7 @@ earthGroup.add(clouds)
 
 
 let basicSphere=new THREE.Mesh(
-    new THREE.TetrahedronGeometry(earthSize/40,0),new THREE.MeshStandardMaterial({color:"green",emissive:"red",emissiveIntensity:3})
+    new THREE.TetrahedronGeometry(earthSize/40,0),new THREE.MeshStandardMaterial({color:"green",emissive:"red",emissiveIntensity:1})
 );
 
 
@@ -100,6 +99,14 @@ let long=-4.4860088;
 
 let radLat=(-lat+90)*Math.PI/180;
 let radLong=(long)*Math.PI/180;
+
+earthGroup.rotation.y=3,14159; 
+
+
+const basicSphereLight=new THREE.PointLight( "cyan", 0, 100 );
+basicSphereLight.position.set(basicSphere.position.x,basicSphere.position.y,basicSphere.position.z);
+basicSphereLight.intensity=1
+earthGroup.add(basicSphereLight);
 rotateAboutPoint(
     basicSphere, 
     new THREE.Vector3(0,0,0), 
@@ -108,7 +115,15 @@ rotateAboutPoint(
     basicSphere, 
     new THREE.Vector3(0,0,0), 
     new THREE.Vector3(0,1,0), radLong, false);
-    
+rotateAboutPoint(
+        basicSphereLight, 
+        new THREE.Vector3(0,0,0), 
+        new THREE.Vector3(0,0,1), radLat, false);
+rotateAboutPoint(
+        basicSphereLight, 
+        new THREE.Vector3(0,0,0), 
+        new THREE.Vector3(0,1,0), radLong, false);
+         
 //basicSphere.rotation.z=(lat*Math.PI/180);
 
 
@@ -156,7 +171,7 @@ const loop=()=>{
     renderer.render(scene,camera)
     clouds.rotation.y+=0.0005
     window.requestAnimationFrame(loop);
-    basicSphere.rotation.x+=0.005
+    basicSphere.rotation.x+=0.02
 }
 loop();
 
